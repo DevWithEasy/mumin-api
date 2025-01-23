@@ -1,4 +1,5 @@
 const arabic = require('../data/arabic.json')
+const arabic_only = require('../data/abrabic_only.json')
 const english = require('../data/en.json')
 const bn_jahirul = require('../data/jahirul_bn.json')
 const bn_mohiuddin = require('../data/muhiuddin_bn.json')
@@ -9,6 +10,7 @@ exports.quranCreate = async (req, res, next) => {
     const quran  = [] ;
     suras.forEach((s) => {
       const ar = arabic.find(sura => sura.number === s.id)
+      const ar_only = arabic_only.find(sura => sura.id === s.id)
       const en = english.find(sura => sura.number === s.id)
       const bnJahirul = bn_jahirul.find(sura => sura.number === s.id)
       const bnMohiuddin = bn_mohiuddin.find(sura => sura.number === s.id)
@@ -23,7 +25,7 @@ exports.quranCreate = async (req, res, next) => {
           ruku: ayah.ruku,
           hizbQuarter: ayah.hizbQuarter,
           sajda: ayah.sajda,
-          arabic: ayah.text,
+          arabic: ar_only.verses[i].text,
           english: en.ayahs[i].text,
           jahirul_bn: bnJahirul.ayahs[i].text,
           muhiuddin_bn: bnMohiuddin.ayahs[i].text,
@@ -49,8 +51,9 @@ exports.quranCreate = async (req, res, next) => {
   }
 };
 
-exports.docsUpdate = async (req, res, next) => {
+exports.getQuran = async (req, res, next) => {
   try {
+    res.json(arabic)
   } catch (error) {
     return res.status(500).json({
       success: false,
