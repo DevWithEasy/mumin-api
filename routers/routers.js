@@ -1,9 +1,14 @@
 const docsRouter = require('./docsRouter')
+const generateRouter = require('./generatorRouter')
 
 const routers = [
     {
         path : '/api/docs',
         handler : docsRouter
+    },
+    {
+        path : '/api/generate',
+        handler : generateRouter
     },
     {
         path : '/',
