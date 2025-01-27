@@ -84,7 +84,7 @@ exports.duaCreate = async (req, res, next) => {
       names.forEach(name => {
         const {dua_global_id,duaname} = name
         const detail = dua_details.find(d => d.dua_global_id == name.dua_global_id)
-        const {arabic,bottom,reference,top,translations} = detail
+        const {arabic,bottom,reference,top,translations,transliteration} = detail
         data.push({
           id: dua_global_id,
           category : category.id,
@@ -94,6 +94,7 @@ exports.duaCreate = async (req, res, next) => {
           reference,
           top,
           translations,
+          transliteration
         })
       })
     })
