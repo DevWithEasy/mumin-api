@@ -7,6 +7,10 @@ const suras = require('../data/quran_suras.json')
 const dua_category = require('../data/dua/category.json')
 const dua_names = require('../data/dua/duanames.json')
 const dua_details = require('../data/dua/duadetails.json')
+const salah_topics = require('../data/salah/salah_topics.json')
+const fs = require("fs")
+const path = require("path")
+
 
 exports.quranCreate = async (req, res, next) => {
   try {
@@ -117,3 +121,64 @@ exports.duaCreate = async (req, res, next) => {
     });
   }
 }
+
+
+exports.salahTopics = async (req, res, next) => {
+  try {
+    res.json(salah_topics)
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      status: 500,
+      message: error.message,
+    });
+  }
+}
+
+exports.salahSingleTopics = async (req, res, next) => {
+  try {
+    const data = salah_topics.find(s => s.id == req.params.id)
+    res.json(data)
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      status: 500,
+      message: error.message,
+    });
+  }
+}
+
+exports.salahTopicsUpdate = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const updateData = req.body;
+
+    const filePath = path.join(__dirname, "../data/salah/salah_topics.json");
+
+    const jsonData = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+
+    const index = jsonData.findIndex(item => item.id === parseInt(id));
+
+    if (index === -1) {
+      return res.status(404).json({
+        success: false,
+        status: 404,
+        message: "Topic not found",
+      });
+    }
+
+    // Update the object with new data
+    jsonData[index] = { ...jsonData[index], ...updateData };
+
+    // Write the updated JSON data back to the file
+    fs.writeFileSync(filePath, JSON.stringify(jsonData, null, 2));
+
+    return res.json(jsonData[index]);
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      status: 500,
+      message: error.message,
+    });
+  }
+};
