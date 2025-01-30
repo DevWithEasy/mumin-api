@@ -7,7 +7,9 @@ const suras = require('../data/quran_suras.json')
 const dua_category = require('../data/dua/category.json')
 const dua_names = require('../data/dua/duanames.json')
 const dua_details = require('../data/dua/duadetails.json')
+const salah_category = require('../data/salah/salah_category.json')
 const salah_topics = require('../data/salah/salah_topics.json')
+const salah_app_topics = require('../data/salah/salah_topics_app.json')
 const fs = require("fs")
 const path = require("path")
 
@@ -125,7 +127,19 @@ exports.duaCreate = async (req, res, next) => {
 
 exports.salahTopics = async (req, res, next) => {
   try {
-    res.json(salah_topics)
+    const topics = []
+    
+    salah_topics.forEach(topic=>{
+      const findCategory = salah_category.find(item=>item.id === topic.category)
+      const findTopic = findCategory.topics.find(item=>item.id == topic.title_id)
+      const newTopic = {
+        ...topic,
+        category : {id: findCategory.id , heading : findCategory.heading},
+        title_id : findTopic
+      }
+      topics.push(newTopic)
+    })
+    res.json(topics)
   } catch (error) {
     return res.status(500).json({
       success: false,
@@ -154,6 +168,65 @@ exports.salahTopicsUpdate = async (req, res, next) => {
     const updateData = req.body;
 
     const filePath = path.join(__dirname, "../data/salah/salah_topics.json");
+
+    const jsonData = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+
+    const index = jsonData.findIndex(item => item.id === parseInt(id));
+
+    if (index === -1) {
+      return res.status(404).json({
+        success: false,
+        status: 404,
+        message: "Topic not found",
+      });
+    }
+
+    // Update the object with new data
+    jsonData[index] = { ...jsonData[index], ...updateData };
+
+    // Write the updated JSON data back to the file
+    fs.writeFileSync(filePath, JSON.stringify(jsonData, null, 2));
+
+    return res.json(jsonData[index]);
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      status: 500,
+      message: error.message,
+    });
+  }
+};
+exports.salahAppTopics = async (req, res, next) => {
+  try {
+    res.json(salah_app_topics)
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      status: 500,
+      message: error.message,
+    });
+  }
+}
+
+exports.salahAppSingleTopics = async (req, res, next) => {
+  try {
+    const data = salah_app_topics.find(s => s.id == req.params.id)
+    res.json(data)
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      status: 500,
+      message: error.message,
+    });
+  }
+}
+
+exports.salahAppTopicsUpdate = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const updateData = req.body;
+
+    const filePath = path.join(__dirname, "../data/salah/salah_topics_app.json");
 
     const jsonData = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
