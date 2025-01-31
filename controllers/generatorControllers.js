@@ -7,9 +7,10 @@ const suras = require('../data/quran_suras.json')
 const dua_category = require('../data/dua/category.json')
 const dua_names = require('../data/dua/duanames.json')
 const dua_details = require('../data/dua/duadetails.json')
-const salah_category = require('../data/salah/salah_category.json')
+const salatur_category = require('../data/salah/salatur_category.json')
+const salatur_topics = require('../data/salah/salatur_topics.json')
+const salah = require('../data/salah/salah.json')
 const salah_topics = require('../data/salah/salah_topics.json')
-const salah_app_topics = require('../data/salah/salah_topics_app.json')
 const fs = require("fs")
 const path = require("path")
 
@@ -125,12 +126,12 @@ exports.duaCreate = async (req, res, next) => {
 }
 
 
-exports.salahTopics = async (req, res, next) => {
+exports.salaturTopics = async (req, res, next) => {
   try {
     const topics = []
     
-    salah_topics.forEach(topic=>{
-      const findCategory = salah_category.find(item=>item.id === topic.category)
+    salatur_topics.forEach(topic=>{
+      const findCategory = salatur_category.find(item=>item.id === topic.category)
       const findTopic = findCategory.topics.find(item=>item.id == topic.title_id)
       const newTopic = {
         ...topic,
@@ -149,9 +150,9 @@ exports.salahTopics = async (req, res, next) => {
   }
 }
 
-exports.salahSingleTopics = async (req, res, next) => {
+exports.salaturSingleTopics = async (req, res, next) => {
   try {
-    const data = salah_topics.find(s => s.id == req.params.id)
+    const data = salatur_topics.find(s => s.id == req.params.id)
     res.json(data)
   } catch (error) {
     return res.status(500).json({
@@ -162,12 +163,12 @@ exports.salahSingleTopics = async (req, res, next) => {
   }
 }
 
-exports.salahTopicsUpdate = async (req, res, next) => {
+exports.salaturTopicsUpdate = async (req, res, next) => {
   try {
     const { id } = req.params;
     const updateData = req.body;
 
-    const filePath = path.join(__dirname, "../data/salah/salah_topics.json");
+    const filePath = path.join(__dirname, "../data/salah/salatur_topics.json");
 
     const jsonData = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
@@ -196,10 +197,24 @@ exports.salahTopicsUpdate = async (req, res, next) => {
     });
   }
 };
-exports.salahAppTopics = async (req, res, next) => {
+exports.salahTopics = async (req, res, next) => {
   try {
-    res.json(salah_app_topics)
+    const topics = []
+    
+    salah_topics.forEach(topic=>{
+      const findCategory = salah.find(item=>item.id === topic.category)
+      console.log()
+      const findTopic = findCategory.topics.find(item=>item.id == topic.title_id)
+      const newTopic = {
+        ...topic,
+        category : {id: findCategory.id , title : findCategory.title},
+        title_id : findTopic
+      }
+      topics.push(newTopic)
+    })
+    res.json(topics)
   } catch (error) {
+    console.log(error)
     return res.status(500).json({
       success: false,
       status: 500,
@@ -208,9 +223,9 @@ exports.salahAppTopics = async (req, res, next) => {
   }
 }
 
-exports.salahAppSingleTopics = async (req, res, next) => {
+exports.salahSingleTopics = async (req, res, next) => {
   try {
-    const data = salah_app_topics.find(s => s.id == req.params.id)
+    const data = salah_topics.find(s => s.id == req.params.id)
     res.json(data)
   } catch (error) {
     return res.status(500).json({
@@ -221,12 +236,12 @@ exports.salahAppSingleTopics = async (req, res, next) => {
   }
 }
 
-exports.salahAppTopicsUpdate = async (req, res, next) => {
+exports.salahTopicsUpdate = async (req, res, next) => {
   try {
     const { id } = req.params;
     const updateData = req.body;
 
-    const filePath = path.join(__dirname, "../data/salah/salah_topics_app.json");
+    const filePath = path.join(__dirname, "../data/salah/salah_topics.json");
 
     const jsonData = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
