@@ -1,6 +1,8 @@
-const Database = require('better-sqlite3');
+const sqlite3 = require('sqlite3').verbose();
+const path = require('path');
 
-// Create a connection to the SQLite database
-const db = new Database('database.db', { verbose: console.log });
+// Connect to database
+const dbPath = path.join(__dirname,'../database/hadith_bn.db');
+const db = new sqlite3.Database(dbPath);
 
 module.exports = db;

@@ -13,6 +13,7 @@ const salah = require('../data/salah/salah.json')
 const salah_topics = require('../data/salah/salah_topics.json')
 const fs = require("fs")
 const path = require("path")
+const DbCommand = require('../database/dbCommand')
 
 
 exports.quranCreate = async (req, res, next) => {
@@ -270,3 +271,15 @@ exports.salahTopicsUpdate = async (req, res, next) => {
     });
   }
 };
+
+exports.dbTest = async (req, res, next) => {
+  try {
+    DbCommand.getBooks()
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      status: 500,
+      message: error.message,
+    });
+  }
+}
