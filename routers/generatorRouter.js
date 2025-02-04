@@ -3,9 +3,6 @@ const { quranCreate, getQuran, duaCreate,salaturTopics,salaturSingleTopics,salat
 
 const router = require('express').Router()
 
-router.get('/quran',quranCreate)
-router.get('/quran/ar',getQuran)
-router.get('/dua',duaCreate)
 router.get('/salatur/topics',salaturTopics)
 router.get('/salatur/topics/:id',salaturSingleTopics)
 router.put('/salatur/topics/:id',salaturTopicsUpdate)
