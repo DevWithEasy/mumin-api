@@ -1,2 +1,7 @@
 node_modules
 database/hadith_bn.db
+data/salah/salah.json
+data/salah/salah_topics.json
+data/salah/salatur_category.json
+data/salah/salatur_topics.json
+data/salah/salatur_topics_details.json
