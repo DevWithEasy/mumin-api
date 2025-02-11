@@ -28,7 +28,8 @@ exports.salaturTopics = async (req, res, next) => {
 
 exports.salaturSingleTopics = async (req, res, next) => {
   try {
-    const data = salatur_topics.find(s => s.id == req.params.id)
+    console.log(req.params)
+    const data = salatur_topics_details.find(s => s.title_id == req.params.id && s.category == req.params.cat_id)
     res.json(data)
   } catch (error) {
     return res.status(500).json({
@@ -41,14 +42,14 @@ exports.salaturSingleTopics = async (req, res, next) => {
 
 exports.salaturTopicsUpdate = async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const { id,cat_id } = req.params;
     const updateData = req.body;
 
-    const filePath = path.join(__dirname, "../data/salah/salatur_topics.json");
+    const filePath = path.join(__dirname, "../data/salah/salatur_topics_details.json.json");
 
     const jsonData = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
-    const index = jsonData.findIndex(item => item.id === parseInt(id));
+    const index = jsonData.findIndex(item => item.title_id == parseInt(id) && item.category == cat_id);
 
     if (index === -1) {
       return res.status(404).json({
