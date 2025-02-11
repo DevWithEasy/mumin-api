@@ -1,304 +1,352 @@
 [
   {
     "id": 1,
-    "category": 1,
-    "title_id": 1,
-    "description": ""
+    "cat_id": 1,
+    "topic_id": 1,
+    "title": "গোসল",
+    "image": "assets/images/salah/shower.png"
   },
   {
     "id": 2,
-    "category": 1,
-    "title_id": 2,
-    "description": ""
+    "cat_id": 1,
+    "topic_id": 2,
+    "title": "গোসলের ফরজ ও সুন্নত",
+    "image": "assets/images/salah/shower.png"
   },
   {
     "id": 3,
-    "category": 1,
-    "title_id": 3,
-    "description": ""
+    "cat_id": 1,
+    "topic_id": 3,
+    "title": "গোসল কখন ফরজ",
+    "image": "assets/images/salah/shower.png"
   },
   {
     "id": 4,
-    "category": 2,
-    "title_id": 1,
-    "description": ""
+    "cat_id": 2,
+    "topic_id": 1,
+    "title": "ওযু",
+    "image": "assets/images/salah/wudu.png"
   },
   {
     "id": 5,
-    "category": 2,
-    "title_id": 2,
-    "description": ""
+    "cat_id": 2,
+    "topic_id": 2,
+    "title": "ওযুর বিবরণ",
+    "image": "assets/images/salah/wudu.png"
   },
   {
     "id": 6,
-    "category": 2,
-    "title_id": 3,
-    "description": ""
+    "cat_id": 2,
+    "topic_id": 3,
+    "title": "ওযু ভাঙ্গার কারণ",
+    "image": "assets/images/salah/wudu.png"
   },
   {
     "id": 7,
-    "category": 3,
-    "title_id": 1,
-    "description": ""
+    "cat_id": 3,
+    "topic_id": 1,
+    "title": "তায়াম্মুম",
+    "image": "assets/images/salah/tayammum.png"
   },
   {
     "id": 8,
-    "category": 3,
-    "title_id": 2,
-    "description": ""
+    "cat_id": 3,
+    "topic_id": 2,
+    "title": "তায়াম্মুমের বিবরণ",
+    "image": "assets/images/salah/tayammum.png"
   },
   {
     "id": 9,
-    "category": 3,
-    "title_id": 3,
-    "description": ""
+    "cat_id": 3,
+    "topic_id": 3,
+    "title": "তায়াম্মুমের কারণ",
+    "image": "assets/images/salah/tayammum.png"
   },
   {
     "id": 10,
-    "category": 4,
-    "title_id": 1,
-    "description": ""
+    "cat_id": 4,
+    "topic_id": 1,
+    "title": "আযান",
+    "image": "assets/images/salah/adhan.png"
   },
   {
     "id": 11,
-    "category": 4,
-    "title_id": 2,
-    "description": ""
+    "cat_id": 4,
+    "topic_id": 2,
+    "title": "আযানের কালেমা সমূহ",
+    "image": "assets/images/salah/adhan.png"
   },
   {
     "id": 12,
-    "category": 4,
-    "title_id": 3,
-    "description": ""
+    "cat_id": 4,
+    "topic_id": 3,
+    "title": "আযানের পরে দোয়া",
+    "image": "assets/images/salah/adhan.png"
   },
   {
     "id": 13,
-    "category": 4,
-    "title_id": 4,
-    "description": ""
+    "cat_id": 4,
+    "topic_id": 4,
+    "title": "আযানের জওয়াব",
+    "image": "assets/images/salah/adhan.png"
   },
   {
     "id": 14,
-    "category": 4,
-    "title_id": 5,
-    "description": ""
+    "cat_id": 4,
+    "topic_id": 5,
+    "title": "এক্বামত",
+    "image": "assets/images/salah/adhan.png"
   },
   {
     "id": 15,
-    "category": 4,
-    "title_id": 6,
-    "description": ""
+    "cat_id": 4,
+    "topic_id": 6,
+    "title": "আযানের পরে দোয়া",
+    "image": "assets/images/salah/adhan.png"
   },
   {
     "id": 16,
-    "category": 4,
-    "title_id": 7,
-    "description": ""
+    "cat_id": 4,
+    "topic_id": 7,
+    "title": "আযানের অন্যান্য পরিত্যাজ্য বিষয়",
+    "image": "assets/images/salah/adhan.png"
   },
   {
     "id": 17,
-    "category": 4,
-    "title_id": 8,
-    "description": ""
+    "cat_id": 4,
+    "topic_id": 8,
+    "title": "আযানের অন্যান্য মাসায়েল",
+    "image": "assets/images/salah/adhan.png"
   },
   {
     "id": 18,
-    "category": 5,
-    "title_id": 1,
-    "description": ""
+    "cat_id": 5,
+    "topic_id": 1,
+    "title": "ফজর ওয়াক্ত",
+    "image": "assets/images/salah/salah.png"
   },
   {
     "id": 19,
-    "category": 5,
-    "title_id": 2,
-    "description": ""
+    "cat_id": 5,
+    "topic_id": 2,
+    "title": "যোহর ওয়াক্ত",
+    "image": "assets/images/salah/salah.png"
   },
   {
     "id": 20,
-    "category": 5,
-    "title_id": 3,
-    "description": ""
+    "cat_id": 5,
+    "topic_id": 3,
+    "title": "আসর ওয়াক্ত",
+    "image": "assets/images/salah/salah.png"
   },
   {
     "id": 21,
-    "category": 5,
-    "title_id": 4,
-    "description": ""
+    "cat_id": 5,
+    "topic_id": 4,
+    "title": "মাগরিব ওয়াক্ত",
+    "image": "assets/images/salah/salah.png"
   },
   {
     "id": 22,
-    "category": 5,
-    "title_id": 5,
-    "description": ""
+    "cat_id": 5,
+    "topic_id": 5,
+    "title": "এশা ওয়াক্ত",
+    "image": "assets/images/salah/salah.png"
   },
   {
     "id": 23,
-    "category": 6,
-    "title_id": 1,
-    "description": ""
+    "cat_id": 6,
+    "topic_id": 1,
+    "title": "দুই রাকাত সালাত",
+    "image": "assets/images/salah/salah.png"
   },
   {
     "id": 24,
-    "category": 6,
-    "title_id": 2,
-    "description": ""
+    "cat_id": 6,
+    "topic_id": 2,
+    "title": "চার রাকাত সালাত",
+    "image": "assets/images/salah/salah.png"
   },
   {
     "id": 25,
-    "category": 6,
-    "title_id": 3,
-    "description": ""
+    "cat_id": 6,
+    "topic_id": 3,
+    "title": "তিন রাকাত সালাত",
+    "image": "assets/images/salah/salah.png"
   },
   {
     "id": 26,
-    "category": 6,
-    "title_id": 4,
-    "description": ""
+    "cat_id": 6,
+    "topic_id": 4,
+    "title": "বিতর সালাত",
+    "image": "assets/images/salah/salah.png"
   },
   {
     "id": 27,
-    "category": 7,
-    "title_id": 1,
-    "description": ""
+    "cat_id": 7,
+    "topic_id": 1,
+    "title": "নিয়ত",
+    "image": "assets/images/salah/niyat.png"
   },
   {
     "id": 28,
-    "category": 7,
-    "title_id": 2,
-    "description": ""
+    "cat_id": 7,
+    "topic_id": 2,
+    "title": "তাকবিরে তাহরিমা",
+    "image": "assets/images/salah/takber.png"
   },
   {
     "id": 29,
-    "category": 7,
-    "title_id": 3,
-    "description": ""
+    "cat_id": 7,
+    "topic_id": 3,
+    "title": "সানা",
+    "image": "assets/images/salah/sana.png"
   },
-
   {
     "id": 30,
-    "category": 7,
-    "title_id": 4,
-    "description": ""
+    "cat_id": 7,
+    "topic_id": 4,
+    "title": "ক্বিরাত",
+    "image": "assets/images/salah/sana.png"
   },
   {
     "id": 31,
-    "category": 7,
-    "title_id": 5,
-    "description": ""
+    "cat_id": 7,
+    "topic_id": 5,
+    "title": "রুকু",
+    "image": "assets/images/salah/ruku.png"
   },
   {
     "id": 32,
-    "category": 7,
-    "title_id": 6,
-    "description": ""
+    "cat_id": 7,
+    "topic_id": 6,
+    "title": "ক্বওমা",
+    "image": "assets/images/salah/niyat.png"
   },
   {
     "id": 33,
-    "category": 7,
-    "title_id": 7,
-    "description": ""
+    "cat_id": 7,
+    "topic_id": 7,
+    "title": "সিজদা",
+    "image": "assets/images/salah/sajdah.png"
   },
   {
     "id": 34,
-    "category": 7,
-    "title_id": 8,
-    "description": ""
+    "cat_id": 7,
+    "topic_id": 8,
+    "title": "তাশাহাদুদ",
+    "image": "assets/images/salah/tasahadud.png"
   },
   {
     "id": 35,
-    "category": 7,
-    "title_id": 9,
-    "description": ""
+    "cat_id": 7,
+    "topic_id": 9,
+    "title": "শেষ বৈঠক",
+    "image": "assets/images/salah/tasahadud.png"
   },
   {
     "id": 36,
-    "category": 7,
-    "title_id": 10,
-    "description": ""
+    "cat_id": 7,
+    "topic_id": 10,
+    "title": "সালাম",
+    "image": "assets/images/salah/salam.png"
   },
   {
     "id": 37,
-    "category": 7,
-    "title_id": 11,
-    "description": ""
+    "cat_id": 7,
+    "topic_id": 11,
+    "title": "সালামের পরে দোয়া",
+    "image": "assets/images/salah/dua.png"
   },
   {
     "id": 38,
-    "category": 8,
-    "title_id": 1,
-    "description": ""
+    "cat_id": 8,
+    "topic_id": 1,
+    "title": "বিতর সালাত",
+    "image": "assets/images/salah/salah.png"
   },
   {
     "id": 39,
-    "category": 8,
-    "title_id": 2,
-    "description": ""
+    "cat_id": 8,
+    "topic_id": 2,
+    "title": "তারাবীহ ও তাহাজ্জুদ",
+    "image": "assets/images/salah/salah.png"
   },
   {
     "id": 40,
-    "category": 8,
-    "title_id": 3,
-    "description": ""
+    "cat_id": 8,
+    "topic_id": 3,
+    "title": "সফরের সালাত",
+    "image": "assets/images/salah/salah.png"
   },
-
   {
     "id": 41,
-    "category": 8,
-    "title_id": 4,
-    "description": ""
+    "cat_id": 8,
+    "topic_id": 4,
+    "title": "জুম‘আর সালাত",
+    "image": "assets/images/salah/salah.png"
   },
   {
     "id": 42,
-    "category": 8,
-    "title_id": 5,
-    "description": ""
+    "cat_id": 8,
+    "topic_id": 5,
+    "title": "ঈদায়নের সালাত",
+    "image": "assets/images/salah/salah.png"
   },
   {
     "id": 43,
-    "category": 8,
-    "title_id": 6,
-    "description": ""
+    "cat_id": 8,
+    "topic_id": 6,
+    "title": "জানাযার সালাত",
+    "image": "assets/images/salah/salah.png"
   },
   {
     "id": 44,
-    "category": 8,
-    "title_id": 7,
-    "description": ""
+    "cat_id": 8,
+    "topic_id": 7,
+    "title": "ইশরাক্ব ও চাশতের সালাত",
+    "image": "assets/images/salah/salah.png"
   },
   {
     "id": 45,
-    "category": 8,
-    "title_id": 8,
-    "description": ""
+    "cat_id": 8,
+    "topic_id": 8,
+    "title": "সূর্য ও চন্দ্র গ্রহণের সালাত",
+    "image": "assets/images/salah/salah.png"
   },
   {
     "id": 46,
-    "category": 8,
-    "title_id": 9,
-    "description": ""
+    "cat_id": 8,
+    "topic_id": 9,
+    "title": "সালাতুল ইস্তিস্ক্বা ",
+    "image": "assets/images/salah/salah.png"
   },
   {
     "id": 47,
-    "category": 8,
-    "title_id": 10,
-    "description": ""
+    "cat_id": 8,
+    "topic_id": 10,
+    "title": "সালাতুল হাজত",
+    "image": "assets/images/salah/salah.png"
   },
   {
     "id": 48,
-    "category": 8,
-    "title_id": 11,
-    "description": ""
+    "cat_id": 8,
+    "topic_id": 11,
+    "title": "সালাতুত তাওবাহ",
+    "image": "assets/images/salah/salah.png"
   },
   {
     "id": 49,
-    "category": 8,
-    "title_id": 12,
-    "description": ""
+    "cat_id": 8,
+    "topic_id": 12,
+    "title": "সালাতুল ইস্তেখারাহ ",
+    "image": "assets/images/salah/salah.png"
   },
   {
     "id": 50,
-    "category": 8,
-    "title_id": 13,
-    "description": ""
+    "cat_id": 8,
+    "topic_id": 13,
+    "title": "সালাতুত তাসবীহ",
+    "image": "assets/images/salah/salah.png"
   }
 ]

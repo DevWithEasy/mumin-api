@@ -1,8 +1,9 @@
 const salatur_category = require('../data/salah/salatur_category.json')
 const salatur_topics = require('../data/salah/salatur_topics.json')
 const salatur_topics_details = require('../data/salah/salatur_topics_details.json')
-const salah = require('../data/salah/salah.json')
+const salah_category = require('../data/salah/salah_category.json')
 const salah_topics = require('../data/salah/salah_topics.json')
+const salah_topics_details = require('../data/salah/salah_topics_details.json')
 const fs = require("fs")
 const path = require("path")
 const DbCommand = require('../database/dbCommand')
@@ -28,8 +29,8 @@ exports.salaturTopics = async (req, res, next) => {
 
 exports.salaturSingleTopics = async (req, res, next) => {
   try {
-    console.log(req.params)
-    const data = salatur_topics_details.find(s => s.title_id == req.params.id && s.category == req.params.cat_id)
+    const data = salatur_topics_details.find(s => s.topic_id == req.params.id && s.cat_id == req.params.cat_id)
+
     res.json(data)
   } catch (error) {
     return res.status(500).json({
@@ -45,11 +46,11 @@ exports.salaturTopicsUpdate = async (req, res, next) => {
     const { id,cat_id } = req.params;
     const updateData = req.body;
 
-    const filePath = path.join(__dirname, "../data/salah/salatur_topics_details.json.json");
+    const filePath = path.join(__dirname, "../data/salah/salatur_topics_details.json");
 
     const jsonData = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
-    const index = jsonData.findIndex(item => item.title_id == parseInt(id) && item.category == cat_id);
+    const index = jsonData.findIndex(item => item.topic_id == parseInt(id) && item.cat_id == cat_id);
 
     if (index === -1) {
       return res.status(404).json({
@@ -67,6 +68,7 @@ exports.salaturTopicsUpdate = async (req, res, next) => {
 
     return res.json(jsonData[index]);
   } catch (error) {
+    console.log(error)
     return res.status(500).json({
       success: false,
       status: 500,
@@ -76,22 +78,15 @@ exports.salaturTopicsUpdate = async (req, res, next) => {
 };
 exports.salahTopics = async (req, res, next) => {
   try {
-    const topics = []
-    
-    salah_topics.forEach(topic=>{
-      const findCategory = salah.find(item=>item.id === topic.category)
-      console.log()
-      const findTopic = findCategory.topics.find(item=>item.id == topic.title_id)
-      const newTopic = {
-        ...topic,
-        category : {id: findCategory.id , title : findCategory.title},
-        title_id : findTopic
+
+    const data = salah_category.map(category => {
+      return {
+        ...category,
+        topics : salah_topics.filter(t=>t.cat_id == category.id)
       }
-      topics.push(newTopic)
     })
-    res.json(topics)
+    res.json(data)
   } catch (error) {
-    console.log(error)
     return res.status(500).json({
       success: false,
       status: 500,
@@ -102,7 +97,7 @@ exports.salahTopics = async (req, res, next) => {
 
 exports.salahSingleTopics = async (req, res, next) => {
   try {
-    const data = salah_topics.find(s => s.id == req.params.id)
+    const data = salah_topics_details.find(s => s.topic_id == req.params.id && s.cat_id == req.params.cat_id)
     res.json(data)
   } catch (error) {
     return res.status(500).json({
@@ -115,14 +110,14 @@ exports.salahSingleTopics = async (req, res, next) => {
 
 exports.salahTopicsUpdate = async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const { id,cat_id } = req.params;
     const updateData = req.body;
 
-    const filePath = path.join(__dirname, "../data/salah/salah_topics.json");
+    const filePath = path.join(__dirname, "../data/salah/salah_topics_details.json");
 
     const jsonData = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
-    const index = jsonData.findIndex(item => item.id === parseInt(id));
+    const index = jsonData.findIndex(item => item.topic_id == parseInt(id) && item.cat_id == cat_id);
 
     if (index === -1) {
       return res.status(404).json({
