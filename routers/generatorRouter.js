@@ -1,4 +1,4 @@
-const { quranCreate, getQuran, duaCreate,salaturTopics,salaturSingleTopics,salaturTopicsUpdate,salahTopicsUpdate ,salahTopics,salahSingleTopics, dbTest, jakahTopics, jakahSingleTopics, jakahTopicsUpdate} = require('../controllers/generatorControllers')
+const { salaturTopics,salaturSingleTopics,salaturTopicsUpdate,salahTopicsUpdate ,salahTopics,salahSingleTopics, dbTest, jakahTopics, jakahSingleTopics, jakahTopicsUpdate, sawmTopics, sawmSingleTopics, sawmTopicsUpdate} = require('../controllers/generatorControllers')
 
 
 const router = require('express').Router()
@@ -12,9 +12,9 @@ router.put('/salah/topics/:cat_id/:id',salahTopicsUpdate)
 router.get('/jakah/topics',jakahTopics)
 router.get('/jakah/topics/:cat_id/:id',jakahSingleTopics)
 router.put('/jakah/topics/:cat_id/:id',jakahTopicsUpdate)
-router.get('/sawm/topics',jakahTopics)
-router.get('/sawm/topics/:id',jakahSingleTopics)
-router.put('/sawm/topics/:id',jakahTopicsUpdate)
+router.get('/sawm/topics',sawmTopics)
+router.get('/sawm/topics/:id',sawmSingleTopics)
+router.put('/sawm/topics/:id',sawmTopicsUpdate)
 router.get('/db',dbTest)
 
 

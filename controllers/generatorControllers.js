@@ -143,6 +143,84 @@ exports.salahTopicsUpdate = async (req, res, next) => {
   }
 };
 
+exports.jakahTopics = async (req, res, next) => {
+  try {
+
+    const cat_path = path.join(__dirname, "../data/jakah/jakah_category.json");
+    const topics_path = path.join(__dirname, "../data/salah/salah_topics_details.json");
+
+    const jakah_category = JSON.parse(fs.readFileSync(cat_path, "utf-8"));
+    const jakah_topics = JSON.parse(fs.readFileSync(topics_path, "utf-8"));
+
+    const data = jakah_category.map(category => {
+      return {
+        ...category,
+        topics : jakah_topics.filter(t=>t.cat_id == category.id)
+      }
+    })
+    res.json(data)
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      status: 500,
+      message: error.message,
+    });
+  }
+}
+
+exports.jakahSingleTopics = async (req, res, next) => {
+  const topics_details_path = path.join(__dirname, "../data/jakah/jakah_topics_details.json");
+
+    const jakah_topics_details = JSON.parse(fs.readFileSync(topics_details_path, "utf-8"));
+  try {
+    const data = jakah_topics_details.find(s => s.topic_id == req.params.id && s.cat_id == req.params.cat_id)
+    res.json(data)
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      status: 500,
+      message: error.message,
+    });
+  }
+}
+
+exports.jakahTopicsUpdate = async (req, res, next) => {
+  try {
+    const { id,cat_id } = req.params;
+    const updateData = req.body;
+
+    const filePath = path.join(__dirname, "../data/jakah/jakah_topics_details.json");
+
+    const jsonData = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+
+    const index = jsonData.findIndex(item => item.topic_id == parseInt(id) && item.cat_id == cat_id);
+
+    if (index === -1) {
+      return res.status(404).json({
+        success: false,
+        status: 404,
+        message: "Topic not found",
+      });
+    }
+
+    // Update the object with new data
+    jsonData[index] = { ...jsonData[index], ...updateData };
+
+    // Write the updated JSON data back to the file
+    fs.writeFileSync(filePath, JSON.stringify(jsonData, null, 2));
+
+    return res.json(jsonData[index]);
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      status: 500,
+      message: error.message,
+    });
+  }
+};
+
+
+
 exports.sawmTopics = async (req, res, next) => {
   try {
     const topics_path = path.join(__dirname, "../data/sawm/sawm_topics.json");
